@@ -25,11 +25,11 @@ def c_text(d):
 
 def pd_class(text):
     cl_text =c_text(text)
-    word_encode = joblib.load('/models/word_vec_encoder.pkl')
+    word_encode = joblib.load('/model/word_vec_encoder.pkl')
     text_vec = word_encode.transform([cl_text])
-    load_classi = joblib.load('/models/dt.pkl')
+    load_classi = joblib.load('/model/dt.pkl')
     pred = load_classi.predict(text_vec)
-    label_encoder = joblib.load('models/ouput_label_encoder.pkl')
+    label_encoder = joblib.load('model/ouput_label_encoder.pkl')
     result = label_encoder.inverse_transform(pred)
     apred = load_classi.predict_proba(text_vec)[0]
     ans_list = []
