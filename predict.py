@@ -27,7 +27,7 @@ def pd_class(text):
     cl_text =c_text(text)
     word_encode = joblib.load('/models/decison_tree/word_vec_encoder.pkl')
     text_vec = word_encode.transform([cl_text])
-    load_classi = load_model('/models/decison_tree/cnn.h5')
+    load_classi = joblib.load('/models/decison_tree/dt.pkl')
     pred = load_classi.predict(text_vec)
     label_encoder = joblib.load('/decison_tree/output_label_encoder.pkl')
     result = label_encoder.inverse_transform(pred)
